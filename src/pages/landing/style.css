@@ -1,0 +1,422 @@
+/* ══════════════════════════════════════════════════════════
+   Landing Page — Investor site
+   Accent: #d4aa3f (gold)
+   ══════════════════════════════════════════════════════════ */
+
+.land_hero,
+.land_tax_strip,
+.land_props_section,
+.land_cta_section {
+  --gold: #d4aa3f;
+  --gold-dim: rgba(212, 170, 63, 0.12);
+  --gold-border: rgba(212, 170, 63, 0.28);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.07);
+  --text: rgba(255, 255, 255, 0.86);
+  --text-dim: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .land_hero,
+[data-theme="light"] .land_tax_strip,
+[data-theme="light"] .land_props_section,
+[data-theme="light"] .land_cta_section {
+  --gold: #9a6f00;
+  --gold-dim: rgba(154, 111, 0, 0.1);
+  --gold-border: rgba(154, 111, 0, 0.28);
+  --card-bg: rgba(0, 0, 0, 0.025);
+  --card-border: rgba(0, 0, 0, 0.1);
+  --text: rgba(0, 0, 0, 0.84);
+  --text-dim: rgba(0, 0, 0, 0.5);
+}
+
+/* ── Reveal ───────────────────────────────────────────────── */
+.land_reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.land_visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.land_hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #080808;
+  padding: 80px 24px 100px;
+}
+
+.land_canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.land_hero_inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 860px;
+  animation: land_hero_in 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes land_hero_in {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.land_eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-border);
+  padding: 5px 18px;
+  border-radius: 20px;
+  margin-bottom: 32px;
+}
+
+.land_hero_title {
+  font-family: Marcellus, serif;
+  font-size: clamp(2.4rem, 6.5vw, 4.8rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  margin-bottom: 26px;
+}
+
+.land_hero_sub {
+  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  line-height: 1.82;
+  color: rgba(255, 255, 255, 0.58);
+  max-width: 660px;
+  margin: 0 auto 44px;
+}
+
+.land_hero_ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.land_btn_primary {
+  display: inline-block;
+  padding: 13px 32px;
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  color: var(--gold) !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none !important;
+  border-radius: 2px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.land_btn_primary:hover {
+  background: var(--gold);
+  color: #080808 !important;
+}
+
+.land_btn_secondary {
+  display: inline-block;
+  padding: 13px 32px;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none !important;
+  border-radius: 2px;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.land_btn_secondary:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff !important;
+}
+
+/* ── Scroll hint ──────────────────────────────────────────── */
+.land_scroll_hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.land_scroll_bar {
+  display: block;
+  width: 1px;
+  height: 52px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: land_scroll_pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes land_scroll_pulse {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 0.7; }
+}
+
+/* ── Tax strip ────────────────────────────────────────────── */
+.land_tax_strip {
+  background: #0c0c0c;
+  border-top: 1px solid rgba(212, 170, 63, 0.15);
+  border-bottom: 1px solid rgba(212, 170, 63, 0.15);
+  padding: 0;
+}
+
+.land_tax_row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.land_tax_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 36px;
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid rgba(212, 170, 63, 0.1);
+}
+
+.land_tax_item_iom {
+  border-right: 1px solid rgba(212, 170, 63, 0.1);
+}
+
+.land_tax_arrow {
+  font-size: 1.4rem;
+  color: rgba(212, 170, 63, 0.4);
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+
+.land_tax_pct {
+  font-family: Marcellus, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.land_tax_pct_zero {
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(212, 170, 63, 0.2);
+}
+
+.land_tax_label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  display: block;
+  max-width: 180px;
+}
+
+.land_tax_result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 36px;
+  flex: 1;
+  text-align: center;
+}
+
+.land_tax_result_value {
+  font-family: Marcellus, serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.land_tax_result_label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  display: block;
+  max-width: 180px;
+}
+
+/* ── Propositions ─────────────────────────────────────────── */
+.land_props_section {
+  padding: 88px 0;
+}
+
+.land_section_title {
+  font-family: Marcellus, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gold-border);
+  margin-bottom: 48px;
+}
+
+.land_props_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.land_prop_card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.22s ease;
+}
+
+.land_prop_card:hover { border-color: var(--gold-border); }
+
+.land_prop_num {
+  font-family: Marcellus, serif;
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 14px;
+  opacity: 0.7;
+}
+
+.land_prop_title {
+  font-family: Marcellus, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.land_prop_body {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--text-dim);
+  margin: 0 0 20px;
+  flex: 1;
+}
+
+.land_prop_link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--gold) !important;
+  text-decoration: none !important;
+  transition: opacity 0.2s ease;
+  margin-top: auto;
+}
+
+.land_prop_link:hover { opacity: 0.75; }
+
+/* ── Closing CTA ──────────────────────────────────────────── */
+.land_cta_section {
+  padding: 96px 0;
+  background: linear-gradient(135deg, #080808 0%, #100d03 60%, #080808 100%);
+  border-top: 1px solid rgba(212, 170, 63, 0.12);
+}
+
+.land_cta_inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.land_cta_label {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.land_cta_heading {
+  font-family: Marcellus, serif;
+  font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 36px;
+}
+
+.land_cta_btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Light theme ──────────────────────────────────────────── */
+[data-theme="light"] .land_hero { background: #f4f3ef; }
+[data-theme="light"] .land_hero_title { color: #111; }
+[data-theme="light"] .land_hero_sub { color: rgba(0, 0, 0, 0.56); }
+
+[data-theme="light"] .land_btn_secondary {
+  border-color: rgba(0, 0, 0, 0.22);
+  color: rgba(0, 0, 0, 0.58) !important;
+}
+[data-theme="light"] .land_btn_secondary:hover {
+  border-color: rgba(0, 0, 0, 0.5);
+  color: #000 !important;
+}
+
+[data-theme="light"] .land_tax_strip {
+  background: #f8f7f2;
+  border-color: rgba(154, 111, 0, 0.18);
+}
+[data-theme="light"] .land_tax_item { border-right-color: rgba(154, 111, 0, 0.12); }
+[data-theme="light"] .land_tax_item_iom { border-right-color: rgba(154, 111, 0, 0.12); }
+[data-theme="light"] .land_tax_pct { color: rgba(0, 0, 0, 0.35); }
+[data-theme="light"] .land_tax_label { color: rgba(0, 0, 0, 0.38); }
+[data-theme="light"] .land_tax_result_label { color: rgba(0, 0, 0, 0.38); }
+[data-theme="light"] .land_tax_arrow { color: rgba(154, 111, 0, 0.4); }
+
+[data-theme="light"] .land_cta_section {
+  background: linear-gradient(135deg, #f4f3ef 0%, #faf6e4 60%, #f4f3ef 100%);
+  border-color: rgba(154, 111, 0, 0.14);
+}
+[data-theme="light"] .land_cta_heading { color: #111; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .land_props_grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+@media (max-width: 767px) {
+  .land_tax_row { flex-direction: column; }
+  .land_tax_item,
+  .land_tax_item_iom,
+  .land_tax_result {
+    border-right: none;
+    border-bottom: 1px solid rgba(212, 170, 63, 0.1);
+    padding: 24px 20px;
+    width: 100%;
+  }
+  .land_tax_result { border-bottom: none; }
+  .land_tax_arrow { transform: rotate(90deg); padding: 4px 0; }
+  .land_props_section { padding: 60px 0; }
+  .land_cta_section { padding: 72px 0; }
+}
